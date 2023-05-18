@@ -781,12 +781,11 @@ KBUILD_CFLAGS_MODULE += -include $(srctree)/include/linux/integrated_module.h
 endif
 
 ifdef CONFIG_LTO_GCC
-CC_FLAGS_LTO	:= -flto=jobserver -fipa-pta -fno-fat-lto-objects \
+CC_FLAGS_LTO	:= -flto=jobserver -fno-fat-lto-objects \
 		   -fuse-linker-plugin -fwhole-program
 KBUILD_CFLAGS	+= $(CC_FLAGS_LTO)
 LTO_LDFLAGS	:= $(CC_FLAGS_LTO) -Wno-lto-type-mismatch -Wno-psabi \
-		   -Wno-stringop-overflow -Wno-stringop-overread \
-		   -Wno-alloc-size-larger-than -flinker-output=nolto-rel
+		   -Wno-stringop-overflow -flinker-output=nolto-rel
 LDFINAL		:= $(CONFIG_SHELL) $(srctree)/scripts/gcc-ld $(LTO_LDFLAGS)
 AR		:= $(CROSS_COMPILE)gcc-ar
 NM		:= $(CROSS_COMPILE)gcc-nm
