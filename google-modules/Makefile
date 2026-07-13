@@ -80,9 +80,8 @@ ifdef CONFIG_SOC_ZUMA
 # that the drivers produce and hijack the make rule for those objects in order
 # to pass along a header included via `-include` with macros to rename the
 # global gcip symbols to something unique for each driver.
-gcip-drivers := \
-	edgetpu/rio/drivers/edgetpu/rio.o \
-	gxp/zuma/gxp.o
+gcip-drivers := gxp/zuma/gxp.o
+gcip-drivers += $(if $(CONFIG_RIO),edgetpu/rio/drivers/edgetpu/rio.o)
 
 obj-y += $(gcip-drivers)
 

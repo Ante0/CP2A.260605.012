@@ -57,8 +57,10 @@ endif
 
 # Use our defines when compiling, and include mali platform module headers
 ccflags-y += \
-    $(DEFINES) \
-    -I$(src)/../common/include
+        $(DEFINES) \
+        -I$(src)/../common/include \
+        -I$(srctree)/private/google-modules/soc/gs/include \
+        -I$(srctree)/private/google-modules/soc/gs/include/uapi
 
 # Add kernel module target if any of our config options is enabled
 ifneq ($(mali_pixel-objs),)

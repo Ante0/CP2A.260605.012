@@ -30,12 +30,12 @@ endif
 
 # Path to the module source, KERNEL_SRC is defined for out-of-tree Kbuild
 # and BCMDHD_ROOT is passed as KBUILD_OPTIONS for out-of-tree Makefile
-ifeq ($(KERNEL_SRC),)
-  ifeq ($(srctree),.)
-    BCMDHD_ROOT=$(src)
-  else
-    BCMDHD_ROOT=$(srctree)/$(src)
-  endif
+ifeq ($(strip $(BCMDHD_ROOT)),)
+    ifeq ($(srctree),.)
+        BCMDHD_ROOT := $(src)
+    else
+        BCMDHD_ROOT := $(srctree)/$(src)
+    endif
 endif
 
 # For pixel build, unset SOC related configs which are defined in DHD
