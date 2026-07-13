@@ -174,3 +174,5 @@ all_kmi_symbols
 
 # Object directory
 out/
+
+build_sultan.sh
